@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Giocatori</title>
+    <link rel="stylesheet" href="/css/aggiungiGiocatori.css"> <!-- Collega qui il file CSS -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <a href="/" class="home-link">Siw-Sport</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="players-section">
+            <h1>Giocatori nel Database</h1>
+            <div class="players-list">
+                <!-- Itera sui giocatori -->
+                <div th:each="giocatore : ${aggiuntaGiocatori}" class="player-card">
+                    <div class="player-info">
+                        <h2 th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}"></h2>
+                        <p th:text="'Ruolo: ' + ${giocatore.ruolo}"></p>
+                        <p th:text="'Data di Nascita: ' + ${giocatore.dataNascita}"></p>
+                    </div>
+                    <div class="player-availability">
+                        <span th:if="${giocatore.isSvincolato}" class="status available">Disponibile</span>
+                        <span th:if="${!giocatore.isSvincolato}" class="status unavailable">Non Disponibile</span>
+                        <!-- <button th:if="${giocatore.isSvincolato}" th:href="@{'/user/giocatore/ingaggia/' + ${giocatore.id}}" class="toggle-btn">Ingaggia</button> -->
+                        <a th:if="${giocatore.isSvincolato}" th:href="@{'/user/giocatore/ingaggia/' + ${giocatore.id}}"
+                            class="toggle-btn">Ingaggia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="create-player">
+                <a href="/user/giocatore/crea" class="create-btn">Crea Nuovo Giocatore</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Siw-Sport
+    </footer>
+</body>
+
+</html>

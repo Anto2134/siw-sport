@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Giocatore</title>
+    <link rel="stylesheet" href="/css/svincoloGiocatore.css"> <!-- Collegamento al file CSS -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <a href="/" class="home-link">Siw-Sport</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="player-details">
+            <h1>Dettagli Giocatore</h1>
+            <div class="player-card">
+                <h2 th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}"></h2>
+                <p th:text="'Data di Nascita: ' + ${giocatore.dataNascita}"></p>
+                <p th:text="'Luogo di Nascita: ' + ${giocatore.luogoNascita}"></p>
+                <p th:text="'Ruolo: ' + ${giocatore.ruolo}"></p>
+                <p th:text="'Inizio Tesseramento: ' + ${giocatore.inizioTesseramento}"></p>
+                <p th:text="'Fine Tesseramento: ' + ${giocatore.fineTesseramento}"></p>
+            </div>
+
+            <div class="actions">
+                <!-- Form per confermare lo svincolo -->
+                <form th:action="@{'/user/giocatore/svincola/si/' + ${giocatore.id}}" method="post">
+                    <button type="submit" class="btn confirm-btn">Conferma Svincolo</button>
+                </form>
+
+                <!-- Form per negare lo svincolo -->
+                <form th:action="@{'/user/giocatore/svincola/no/' + ${giocatore.id}}" method="post">
+                    <button type="submit" class="btn cancel-btn">Nega Svincolo</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Siw-Sport
+    </footer>
+</body>
+
+</html>

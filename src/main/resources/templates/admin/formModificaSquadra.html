@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Squadra</title>
+    <link rel="stylesheet" href="/css/modificaSquadra.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Modifica Squadra</h1>
+        <form th:action="@{/admin/squadra/modifica/{id}(id=${squadra.id})}" th:object="${squadra}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nome">Nome Squadra</label>
+                <input type="text" id="nome" name="nome" th:field="*{nome}" required>
+                <span class="error-message" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome non valido.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="indirizzo">Indirizzo</label>
+                <input type="text" id="indirizzo" name="indirizzo" th:field="*{indirizzo}" required>
+                <span class="error-message" th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}">Indirizzo non valido.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="annoFondazione">Anno di Fondazione</label>
+                <input type="date" id="annoFondazione" name="annoFondazione" th:field="*{annoFondazione}" required>
+                <span class="error-message" th:if="${#fields.hasErrors('annoFondazione')}" th:errors="*{annoFondazione}">Anno di fondazione non valido.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="presidente">Presidente</label>
+                <select id="presidente" name="presidente" th:field="*{presidente}" required>
+                    <option value="" disabled selected>Seleziona un presidente</option>
+                    <option th:each="presidente : ${presidenti}" th:value="${presidente.id}" th:selected="${presidente.id == squadra.presidente.id}" th:text="${presidente.nome}">Presidente</option>
+                </select>
+                <span class="error-message" th:if="${#fields.hasErrors('presidente')}" th:errors="*{presidente}">Seleziona un presidente valido.</span>
+            </div>
+
+            <button type="submit">Salva Modifiche</button>
+        </form>
+    </div>
+</body>
+</html>

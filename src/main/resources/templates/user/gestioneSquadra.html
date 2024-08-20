@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siw-Sport</title>
+    <link th:href="@{/css/gestioneGiocatori.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra di navigazione -->
+    <nav class="navbar">
+        <a href="/" class="site-name">Home</a>
+    </nav>
+
+    <!-- Container per le card -->
+    <div class="card-container">
+        <div class="card">
+            <h2>Visualizza Giocatori</h2>
+            <p>Visualizza i giocatori della tua squadra</p>
+            <a href="/user/giocatori/" class="btn">Vai</a>
+        </div>
+        <div class="card">
+            <h2>Aggiungi Giocatori</h2>
+            <p>Aggiungi giocatori alla tua squadra</p>
+            <a href="/user/aggiuntaGiocatori/" class="btn">Vai</a>
+        </div>
+        <div class="card">
+            <h2>Rimuovi Giocatori</h2>
+            <p>Rimuovi giocatori dalla tua squadra</p>
+            <a href="/user/rimuoviGiocatori/" class="btn">Vai</a>
+        </div>
+    </div>
+</body>
+</html>

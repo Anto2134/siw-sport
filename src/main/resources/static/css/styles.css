@@ -1,0 +1,70 @@
+/* Stili generali */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+header h1 {
+    color: #333;
+}
+
+header p {
+    color: #666;
+}
+
+.link {
+    color: #00f2fe;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.login-btn {
+    background-color: #4facfe;
+}
+
+.login-btn:hover {
+    background-color: #3993e5;
+}
+
+.register-btn {
+    background-color: #00f2fe;
+}
+
+.register-btn:hover {
+    background-color: #00c8d8;
+}

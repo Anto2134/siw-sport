@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siw-Sport</title>
+    <link rel="stylesheet" href="/css/index.css"> <!-- Collega qui il file CSS -->
+</head>
+
+<body>
+    <header>
+        <div class="site-name">
+            <a href="/" class="home-link">Siw-Sport</a>
+        </div>
+        <div class="logout-container">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <div class="link-container">
+            <a href="/squadra" class="main-link">Visualizza Squadre</a>
+            <a href="/user/gestioneGiocatori/" class="main-link">Gestisci Squadra</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Siw-Sport
+    </footer>
+</body>
+
+</html>

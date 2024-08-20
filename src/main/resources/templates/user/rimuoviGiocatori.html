@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizza Giocatori</title>
+    <link rel="stylesheet" href="/css/rimuoviGiocatori.css"> <!-- Collega qui il file CSS -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <a href="/" class="home-link">Siw-Sport</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="players-section">
+            <h1>Giocatori</h1>
+            <div class="players-list">
+                <!-- Itera sui giocatori con Thymeleaf -->
+                <div th:each="giocatore : ${rimuoviGiocatori}" class="player-card">
+                    <div class="player-info">
+                        <h2 th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}"></h2>
+                        <p th:text="'Ruolo: ' + ${giocatore.ruolo}"></p>
+                        <p th:text="'Data di Nascita: ' + ${giocatore.dataNascita}"></p>
+                        <a th:href="@{'/user/giocatore/svincola/' + ${giocatore.id}}" class="details-btn">Svincola</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Siw-Sport
+    </footer>
+</body>
+
+</html>

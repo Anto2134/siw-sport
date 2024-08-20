@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creazione Nuovo Giocatore</title>
+    <link rel="stylesheet" href="/css/creaGiocatore.css"> <!-- Collega qui il file CSS -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <a href="/" class="home-link">Siw-Sport</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h1>Crea Nuovo Giocatore</h1>
+            <form th:action="@{/user/giocatore/crea}" th:object="${giocatore}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Nome del giocatore">
+                </div>
+                <div class="form-group">
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" id="cognome" name="cognome" required placeholder="Cognome del giocatore">
+                </div>
+                <div class="form-group">
+                    <label for="dataNascita">Data di Nascita:</label>
+                    <input type="date" id="dataNascita" name="dataNascita" required>
+                </div>
+                <div class="form-group">
+                    <label for="luogoNascita">Luogo di Nascita:</label>
+                    <input type="text" id="luogoNascita" name="luogoNascita" required placeholder="Luogo di nascita">
+                </div>
+                <div class="form-group">
+                    <label for="ruolo">Ruolo:</label>
+                    <input type="text" id="ruolo" name="ruolo" required placeholder="Ruolo del giocatore">
+                </div>
+                <div class="form-group">
+                    <label for="inizioTesseramento">Inizio Tesseramento:</label>
+                    <input type="date" id="inizioTesseramento" name="inizioTesseramento" required>
+                </div>
+                <div class="form-group">
+                    <label for="fineTesseramento">Fine Tesseramento:</label>
+                    <input type="date" id="fineTesseramento" name="fineTesseramento" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Crea Giocatore</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Siw-Sport
+    </footer>
+</body>
+
+</html>

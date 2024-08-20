@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Squadra</title>
+    <link rel="stylesheet" href="/css/dettagliSquadra.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 th:text="${squadra.nome}">Nome Squadra</h1>
+        </header>
+
+        <section class="info-section">
+            <h2>Informazioni Squadra</h2>
+            <p><strong>Indirizzo:</strong> <span th:text="${squadra.indirizzo}">Indirizzo</span></p>
+            <p><strong>Anno di Fondazione:</strong>
+                <span th:text="${#temporals.format(squadra.annoFondazione, 'dd/MM/yyyy')}">Anno Fondazione</span>
+            </p>
+
+            <p><strong>Presidente:</strong> <span th:text="${squadra.presidente.nome}">Nome Presidente</span></p>
+        </section>
+
+        <section class="players-section">
+            <h2>Giocatori</h2>
+            <ul>
+                <!-- <li th:each="giocatore : ${squadra.giocatori}">
+                    <span th:text="${giocatore.nome}">Nome Giocatore</span> - <span
+                        th:text="${giocatore.ruolo}">Ruolo</span>
+                </li> -->
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>

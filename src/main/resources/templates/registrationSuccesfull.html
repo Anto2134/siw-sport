@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SiwDispositiviElettronici - Registrazione conclusa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+    <header>
+        <div th:if="${userDetails}" class="auth-buttons">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout" class="auth-button">Logout</a>
+        </div>
+        <div th:unless="${userDetails}" class="auth-buttons">
+            <a href="/login" class="auth-button">Login</a>
+        </div>
+        <div class="title">
+            <a href="/"><img src="/images/logo-siw.png" width="50%" /></a>
+        </div>
+    </header>
+
+    <main class="container text-center mt-5">
+        <h1>Congratulazioni, ti sei registrato!</h1>
+        <div class="mt-3">
+            <span><strong>Nome:</strong> </span>
+            <span th:text="${user.nome}"></span>
+        </div>
+        <div class="mt-3">
+            <span><strong>Cognome:</strong> </span>
+            <span th:text="${user.cognome}"></span>
+        </div>
+        <div class="mt-3">
+            <span><strong>Email:</strong> </span>
+            <span th:text="${user.email}"></span>
+        </div>
+        <div class="mt-5">
+            <a href="/" class="btn btn-primary">Torna alla Home</a>
+        </div>
+    </main>
+</body>
+
+</html>

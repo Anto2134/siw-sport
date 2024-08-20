@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Giocatori</title>
+    <link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+    <div><a href="/"><img src="/images/logo-siw.png" width="50%" /></a></div>
+    <h1>Giocatori</h1>
+    <div th:if="${giocatori==null || giocatori.isEmpty()}">Non ci sono giocatori nel sistema</div>
+    <ul>
+        <li th:each="giocatore : ${giocatori}">
+            <a th:text="${giocatore.nome}">
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>

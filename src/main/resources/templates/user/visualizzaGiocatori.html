@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squadra - Giocatori</title>
+    <link rel="stylesheet" href="/css/visualizzaGiocatori.css"> <!-- Collega qui il file CSS -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <a href="/" class="home-link">Siw-Sport</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="team-section">
+            <h1>Giocatori della Squadra</h1>
+            <div class="players-grid">
+                <!-- Itera sui giocatori -->
+                <div th:each="giocatore : ${giocatori}" class="player-card">
+                    <!-- <img th:src="@{/images/players/} + ${giocatore.id} + '.jpg'" alt="Immagine giocatore"> -->
+                    <div class="player-info">
+                        <h2 th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}"></h2>
+                        <p th:text="'Ruolo: ' + ${giocatore.ruolo}"></p>
+                        <p th:text="'Data di Nascita: ' + ${giocatore.dataNascita}"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Siw-Sport
+    </footer>
+</body>
+
+</html>

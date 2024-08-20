@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squadre</title>
+    <link rel="stylesheet" href="/css/squadre.css"> <!-- Collega qui il file CSS -->
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo"> <!-- Reindirizza alla home page -->
+            <!-- Inserisci qui il logo se desideri -->
+        </a>
+        <h1>
+            <a href="/" class="home-link">Home</a> <!-- Link "Home" che reindirizza alla home -->
+        </h1>
+    </header>
+
+    <main>
+        <div class="message" th:if="${squadre==null || squadre.isEmpty()}">Non ci sono squadre nel sistema</div>
+        <ul class="team-list" th:if="${squadre!=null && !squadre.isEmpty()}">
+            <li class="team-item" th:each="squadra : ${squadre}">
+                <a class="no-style" th:href="@{'/squadra/' + ${squadra.id}}">
+                    <span th:text="${squadra.nome}"></span> -
+                </a>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        &copy; 2024 Squadre Management
+    </footer>
+</body>
+
+</html>
