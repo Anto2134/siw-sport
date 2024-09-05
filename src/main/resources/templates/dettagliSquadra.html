@@ -5,34 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dettagli Squadra</title>
-    <link rel="stylesheet" href="/css/dettagliSquadra.css">
+    <link rel="stylesheet" href="/css/dettagliSquadra.css"> <!-- Collega qui il file CSS -->
 </head>
 
 <body>
+    <header class="navbar">
+        <a href="javascript:history.back();" class="back-link">Indietro</a>
+        <h1 th:text="${squadra.nome}">Nome Squadra</h1>
+    </header>
+
     <div class="container">
-        <header>
-            <h1 th:text="${squadra.nome}">Nome Squadra</h1>
-        </header>
+        <main>
+            <section class="info-section">
+                <h2>Informazioni Squadra</h2>
+                <p><strong>Indirizzo:</strong> <span th:text="${squadra.indirizzo}">Indirizzo</span></p>
+                <p><strong>Anno di Fondazione:</strong> 
+                    <span th:text="${#temporals.format(squadra.annoFondazione, 'dd/MM/yyyy')}">Anno Fondazione</span>
+                </p>
+                <p><strong>Presidente:</strong> <span th:text="${squadra.presidente.nome}">Nome Presidente</span></p>
+            </section>
 
-        <section class="info-section">
-            <h2>Informazioni Squadra</h2>
-            <p><strong>Indirizzo:</strong> <span th:text="${squadra.indirizzo}">Indirizzo</span></p>
-            <p><strong>Anno di Fondazione:</strong>
-                <span th:text="${#temporals.format(squadra.annoFondazione, 'dd/MM/yyyy')}">Anno Fondazione</span>
-            </p>
-
-            <p><strong>Presidente:</strong> <span th:text="${squadra.presidente.nome}">Nome Presidente</span></p>
-        </section>
-
-        <section class="players-section">
-            <h2>Giocatori</h2>
-            <ul>
-                <!-- <li th:each="giocatore : ${squadra.giocatori}">
-                    <span th:text="${giocatore.nome}">Nome Giocatore</span> - <span
-                        th:text="${giocatore.ruolo}">Ruolo</span>
-                </li> -->
-            </ul>
-        </section>
+            <section class="players-section">
+                <h2>Giocatori</h2>
+                <ul>
+                    <li th:each="giocatore : ${giocatori}">
+                        <span th:text="${giocatore.nome}">Nome Giocatore</span> - <span th:text="${giocatore.ruolo}">Ruolo</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
     </div>
 </body>
 

@@ -9,21 +9,25 @@
 </head>
 
 <body>
-    <header>
+    <header class="navbar">
         <div class="site-name">
             <a href="/" th:href="@{/}" class="home-link">Home</a>
         </div>
     </header>
 
     <main>
-        <div class="message" th:if="${squadre == null || squadre.isEmpty()}">Non ci sono squadre nel sistema</div>
-        <ul class="team-list" th:if="${squadre != null && !squadre.isEmpty()}">
-            <li class="team-item" th:each="squadra : ${squadre}">
-                <span th:text="${squadra.nome}" class="team-name"></span>
-                <a th:href="@{'/admin/squadra/modifica/' + ${squadra.id}}" class="btn btn-warning">Modifica</a>
-            </li>
-        </ul>
-        <a th:href="@{/admin/squadra/crea}" class="add-btn">Aggiungi Nuova Squadra</a>
+        <div class="container">
+            <div class="message" th:if="${squadre == null || squadre.isEmpty()}">Non ci sono squadre nel sistema</div>
+
+            <ul class="team-list" th:if="${squadre != null && !squadre.isEmpty()}">
+                <li class="team-item" th:each="squadra : ${squadre}">
+                    <span th:text="${squadra.nome}" class="team-name"></span>
+                    <a th:href="@{'/admin/squadra/modifica/' + ${squadra.id}}" class="btn btn-warning">Modifica</a>
+                </li>
+            </ul>
+
+            <a th:href="@{/admin/squadra/crea}" class="btn add-btn">Aggiungi Nuova Squadra</a>
+        </div>
     </main>
 
     <footer>

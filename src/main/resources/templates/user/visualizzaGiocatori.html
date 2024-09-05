@@ -12,7 +12,7 @@
     <header>
         <nav>
             <div class="site-name">
-                <a href="/" class="home-link">Siw-Sport</a>
+                <a href="/user/gestioneGiocatori/" class="home-link">Siw-Sport</a>
             </div>
         </nav>
     </header>
@@ -27,7 +27,10 @@
                     <div class="player-info">
                         <h2 th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}"></h2>
                         <p th:text="'Ruolo: ' + ${giocatore.ruolo}"></p>
+                        <p th:text="'Nato a: ' + ${giocatore.luogoNascita}"></p>
                         <p th:text="'Data di Nascita: ' + ${giocatore.dataNascita}"></p>
+                        <p th:text="'Data di Inizio Tesseramento: ' + ${giocatore.inizioTesseramento}"></p>
+                        <p th:text="'Data di Fine Tesseramento: ' + ${giocatore.fineTesseramento}"></p>
                     </div>
                 </div>
             </div>

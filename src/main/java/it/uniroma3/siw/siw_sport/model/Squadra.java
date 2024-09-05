@@ -17,14 +17,6 @@ public class Squadra {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     private String nome;
     private String indirizzo;
     private LocalDate annoFondazione;
@@ -34,6 +26,14 @@ public class Squadra {
     @OneToOne
     @JoinColumn(name = "presidente_id", referencedColumnName = "id", nullable = false)
     private Presidente presidente;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Presidente getPresidente() {
         return presidente;

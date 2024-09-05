@@ -1,85 +1,86 @@
-/* File: dettagliSquadra.css */
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(135deg, #000000, #0072ff);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: #05115b;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.back-link {
+    position: absolute;
+    left: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: #0d06e1;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #002244;
 }
 
 .container {
-    width: 100%;
     max-width: 800px;
+    margin: 5rem auto 0;
+    padding: 1rem;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    overflow: hidden;
-    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
+.info-section,
+.players-section {
+    margin-top: 2rem;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2em;
+.info-section h2,
+.players-section h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #0066cc;
 }
 
-.info-section, .players-section {
-    margin-top: 20px;
-}
-
-.info-section h2, .players-section h2 {
-    color: #007bff;
-    font-size: 1.5em;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
-}
-
-.info-section p, .players-section ul {
-    margin: 10px 0;
-}
-
-.players-section ul {
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-.players-section li {
-    background-color: #f9f9f9;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
 }
 
-.players-section li span {
+li:last-child {
+    border-bottom: none;
+}
+
+li span {
     font-weight: bold;
-}
-
-@media (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    .info-section h2, .players-section h2 {
-        font-size: 1.2em;
-    }
-
-    .players-section li {
-        padding: 8px;
-    }
+    color: #333;
 }

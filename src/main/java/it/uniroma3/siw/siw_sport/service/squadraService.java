@@ -28,4 +28,8 @@ public class squadraService {
     public Iterable<Squadra> findByPresidente(Presidente presidente) {
         return squadraRepository.findByPresidente(presidente);
     }
+
+    public boolean existByName(String nome){
+        return squadraRepository.existsByNome(nome);
+    }
 }

@@ -28,10 +28,16 @@ public class giocatoreService {
         return giocatoreRepository.save(giocatore);
     }
 
-    public void svincola(Long id){
+    public void svincola(Long id) {
         Giocatore giocatore = giocatoreRepository.findById(id).get();
         giocatore.setSquadra(null);
         giocatore.setSvincolato(true);
         giocatoreRepository.save(giocatore);
+    }
+
+    public boolean checkDate(Giocatore g) {
+        if (g.getFineTesseramento().isBefore(g.getInizioTesseramento()))
+            return false;
+        return true;
     }
 }

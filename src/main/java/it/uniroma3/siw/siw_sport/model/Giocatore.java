@@ -14,14 +14,6 @@ public class Giocatore {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     private String nome;
     private String cognome;
     private LocalDate dataNascita;
@@ -31,6 +23,14 @@ public class Giocatore {
     private LocalDate fineTesseramento;
     @ManyToOne
     private Squadra squadra;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Squadra getSquadra() {
         return squadra;

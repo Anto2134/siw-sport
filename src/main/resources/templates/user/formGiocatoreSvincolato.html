@@ -36,9 +36,12 @@
                 </form>
 
                 <!-- Form per negare lo svincolo -->
-                <form th:action="@{'/user/giocatore/svincola/no/' + ${giocatore.id}}" method="post">
+                <!-- <form th:action="@{'user/rimuoviGiocatori/'}" method="get">
                     <button type="submit" class="btn cancel-btn">Nega Svincolo</button>
-                </form>
+                </form> -->
+                <!-- Link per negare lo svincolo -->
+                <a href="javascript:window.history.back();" class="btn cancel-btn">Nega Svincolo</a>
+
             </div>
         </section>
     </main>

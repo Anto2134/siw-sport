@@ -5,7 +5,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
+import it.uniroma3.siw.siw_sport.giocatoreValidator;
 import it.uniroma3.siw.siw_sport.model.Credentials;
 import it.uniroma3.siw.siw_sport.model.Giocatore;
 import it.uniroma3.siw.siw_sport.model.Presidente;
@@ -14,6 +16,7 @@ import it.uniroma3.siw.siw_sport.service.credentialsService;
 import it.uniroma3.siw.siw_sport.service.giocatoreService;
 import it.uniroma3.siw.siw_sport.service.presidenteService;
 import it.uniroma3.siw.siw_sport.service.squadraService;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,6 +36,9 @@ public class presidenteController {
 
     @Autowired
     giocatoreService giocatoreService;
+
+    @Autowired
+    giocatoreValidator giocatoreValidator;
 
     @GetMapping("/presidente/{id}")
     public String getpresidente(@PathVariable("id") Long id, Model model) {
@@ -118,7 +124,7 @@ public class presidenteController {
     }
 
     @PostMapping("user/giocatore/crea")
-    public String saveGiocatore(@ModelAttribute Giocatore giocatore) {
+    public String saveGiocatore(@Valid @ModelAttribute Giocatore giocatore, BindingResult bindingResult, Model model) {
         // Recupera l'utente corrente
         org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext()
                 .getAuthentication();
@@ -130,14 +136,16 @@ public class presidenteController {
         if (squadre == null || !squadre.iterator().hasNext()) {
             throw new IllegalStateException("Nessuna squadra trovata per il presidente corrente");
         }
-
+        giocatoreValidator.validate(giocatore, bindingResult);
+        if (bindingResult.hasErrors())
+            return "user/formNuovoGiocatore";
         Squadra squadraCorrente = squadre.iterator().next();
         giocatore.setSquadra(squadraCorrente); // Associa il giocatore alla squadra
         giocatore.setSvincolato(false);
         // Salva il giocatore nel database
         giocatoreService.save(giocatore);
 
-        return "redirect:/"; // Reindirizza alla pagina di visualizzazione giocatori
+        return "redirect:/user/gestioneGiocatori/"; // Reindirizza alla pagina di visualizzazione giocatori
 
     }
 
@@ -159,14 +167,14 @@ public class presidenteController {
     }
 
     @GetMapping("/user/giocatore/svincola/{id}")
-    public String svincolaGiocatore(Model model, @PathVariable Long id){
+    public String svincolaGiocatore(Model model, @PathVariable Long id) {
         Giocatore giocatore = giocatoreService.findById(id);
         model.addAttribute("giocatore", giocatore);
         return "/user/formGiocatoreSvincolato";
     }
 
     @PostMapping("/user/giocatore/svincola/si/{id}")
-    public String giocatoreSvincolato(Model model, @PathVariable Long id){
+    public String giocatoreSvincolato(Model model, @PathVariable Long id) {
         giocatoreService.svincola(id);
         return "redirect:/user/rimuoviGiocatori/";
     }

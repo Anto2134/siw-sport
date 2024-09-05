@@ -10,4 +10,5 @@ import java.util.List;
 
 public interface squadraRepository extends CrudRepository<Squadra, Long> {
     List<Squadra> findByPresidente(Presidente presidente);
+    boolean existsByNome(String nome);
 }

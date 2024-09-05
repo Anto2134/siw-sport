@@ -12,7 +12,7 @@
     <header>
         <nav>
             <div class="site-name">
-                <a href="/" class="home-link">Siw-Sport</a>
+                <a href="/user/gestioneGiocatori/" class="home-link">Siw-Sport</a>
             </div>
         </nav>
     </header>
@@ -20,7 +20,11 @@
     <main>
         <section class="form-section">
             <h1>Crea Nuovo Giocatore</h1>
-            <form th:action="@{/user/giocatore/crea}" th:object="${giocatore}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/user/giocatore/crea}" th:object="${giocatore}" method="post"
+                enctype="multipart/form-data">
+                <div th:if="${#fields.globalErrors()}">
+                    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+                </div>
                 <div class="form-group">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" required placeholder="Nome del giocatore">

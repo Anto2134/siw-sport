@@ -1,86 +1,57 @@
-<!-- <!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crea Nuova Squadra</title>
-    <link rel="stylesheet" href="/css/nuovaSquadra.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Crea Nuova Squadra</h1>
-            <form th:action="@{/admin/squadra/crea}" th:object="${squadra}" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="nome">Nome Squadra</label>
-                <input type="text" id="nome" name="nome" th:field="*{nome}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome non valido.</span>
-            </div>
-
-            <div class="form-group">
-                <label for="indirizzo">Indirizzo</label>
-                <input type="text" id="indirizzo" name="indirizzo" th:field="*{indirizzo}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}">Indirizzo non valido.</span>
-            </div>
-
-            <div class="form-group">
-                <label for="annoFondazione">Anno di Fondazione</label>
-                <input type="date" id="annoFondazione" name="annoFondazione" th:field="*{annoFondazione}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('annoFondazione')}" th:errors="*{annoFondazione}">Anno di fondazione non valido.</span>
-            </div>
-
-            <div class="form-group">
-                <label for="presidente">Presidente</label>
-                <input type="text" id="presidente" name="presidente" th:field="*{presidente}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('presidente')}" th:errors="*{presidente}">Nome del presidente non valido.</span>
-            </div>
-
-            <button type="submit">Crea Squadra</button>
-        </form>
-    </div>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea Nuova Squadra</title>
-    <link rel="stylesheet" href="/css/nuovaSquadra.css">
+    <link rel="stylesheet" href="/css/nuovaSquadra.css"> <!-- Collega il file CSS -->
 </head>
+
 <body>
+    <header class="navbar">
+        <a href="javascript:history.back();" class="back-link">Indietro</a>
+    </header>
+
     <div class="container">
-        <h1>Crea Nuova Squadra</h1>
-        <form th:action="@{/admin/squadra/crea}" th:object="${squadra}" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="nome">Nome Squadra</label>
-                <input type="text" id="nome" name="nome" th:field="*{nome}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome non valido.</span>
-            </div>
+        <div class="card">
+            <h1>Crea Nuova Squadra</h1>
+            <form th:action="@{/admin/squadra/crea}" th:object="${squadra}" method="post" enctype="multipart/form-data">
+                <div th:if="${#fields.globalErrors()}" class="error-summary">
+                    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+                </div>
 
-            <div class="form-group">
-                <label for="indirizzo">Indirizzo</label>
-                <input type="text" id="indirizzo" name="indirizzo" th:field="*{indirizzo}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}">Indirizzo non valido.</span>
-            </div>
+                <div class="form-group">
+                    <label for="nome">Nome Squadra</label>
+                    <input type="text" id="nome" name="nome" th:field="*{nome}" required>
+                    <span class="error-message" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome non valido.</span>
+                </div>
 
-            <div class="form-group">
-                <label for="annoFondazione">Anno di Fondazione</label>
-                <input type="date" id="annoFondazione" name="annoFondazione" th:field="*{annoFondazione}" required>
-                <span class="error-message" th:if="${#fields.hasErrors('annoFondazione')}" th:errors="*{annoFondazione}">Anno di fondazione non valido.</span>
-            </div>
+                <div class="form-group">
+                    <label for="indirizzo">Indirizzo</label>
+                    <input type="text" id="indirizzo" name="indirizzo" th:field="*{indirizzo}" required>
+                    <span class="error-message" th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}">Indirizzo non valido.</span>
+                </div>
 
-            <div class="form-group">
-                <label for="presidente">Presidente</label>
-                <select id="presidente" name="presidente" th:field="*{presidente}" required>
-                    <option value="" disabled selected>Seleziona un presidente</option>
-                    <option th:each="presidente : ${presidenti}" th:value="${presidente.id}" th:text="${presidente.nome}">Presidente</option>
-                </select>
-                <span class="error-message" th:if="${#fields.hasErrors('presidente')}" th:errors="*{presidente}">Seleziona un presidente valido.</span>
-            </div>
+                <div class="form-group">
+                    <label for="annoFondazione">Anno di Fondazione</label>
+                    <input type="date" id="annoFondazione" name="annoFondazione" th:field="*{annoFondazione}" required>
+                    <span class="error-message" th:if="${#fields.hasErrors('annoFondazione')}" th:errors="*{annoFondazione}">Anno di fondazione non valido.</span>
+                </div>
 
-            <button type="submit">Crea Squadra</button>
-        </form>
+                <div class="form-group">
+                    <label for="presidente">Presidente</label>
+                    <select id="presidente" name="presidente" th:field="*{presidente}" required>
+                        <option value="" disabled selected>Seleziona un presidente</option>
+                        <option th:each="presidente : ${presidenti}" th:value="${presidente.id}" th:text="${presidente.nome}">Presidente</option>
+                    </select>
+                    <span class="error-message" th:if="${#fields.hasErrors('presidente')}" th:errors="*{presidente}">Seleziona un presidente valido.</span>
+                </div>
+
+                <button type="submit" class="btn">Crea Squadra</button>
+            </form>
+        </div>
     </div>
 </body>
-</html>
 
+</html>
