@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nessuna Squadra Trovata</title>
+    <!-- Collegamento al file CSS esterno -->
+    <link rel="stylesheet" th:href="@{/css/nessunaSquadra.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Nessuna Squadra Trovata</h1>
+        <p>Non e' stata trovata nessuna squadra associata al presidente corrente.</p>
+        <button onclick="window.history.back()">Torna Indietro</button>
+    </div>
+</body>
+</html>

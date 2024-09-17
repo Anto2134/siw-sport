@@ -82,7 +82,9 @@ public class presidenteController {
 
         Iterable<Squadra> app = squadraService.findByPresidente(currentUser);
         if (app == null || !app.iterator().hasNext()) {
-            throw new IllegalStateException("Nessuna squadra trovata per il presidente corrente");
+            return "/user/nessunaSquadra.html";
+            // throw new IllegalStateException("Nessuna squadra trovata per il presidente
+            // corrente");
         }
 
         Squadra squadraCorrente = app.iterator().next();
@@ -106,7 +108,9 @@ public class presidenteController {
         // Recupera la squadra dell'utente corrente
         Iterable<Squadra> squadre = squadraService.findByPresidente(currentUser);
         if (squadre == null || !squadre.iterator().hasNext()) {
-            throw new IllegalStateException("Nessuna squadra trovata per il presidente corrente");
+            return "/user/nessunaSquadra.html";
+            // throw new IllegalStateException("Nessuna squadra trovata per il presidente
+            // corrente");
         }
         Squadra squadraCorrente = squadre.iterator().next();
         Giocatore giocatore = giocatoreService.findById(id);
@@ -134,7 +138,9 @@ public class presidenteController {
         // Recupera la squadra dell'utente corrente
         Iterable<Squadra> squadre = squadraService.findByPresidente(currentUser);
         if (squadre == null || !squadre.iterator().hasNext()) {
-            throw new IllegalStateException("Nessuna squadra trovata per il presidente corrente");
+            return "/user/nessunaSquadra.html";
+            // throw new IllegalStateException("Nessuna squadra trovata per il presidente
+            // corrente");
         }
         giocatoreValidator.validate(giocatore, bindingResult);
         if (bindingResult.hasErrors())
@@ -159,7 +165,9 @@ public class presidenteController {
         // Recupera la squadra dell'utente corrente
         Iterable<Squadra> squadre = squadraService.findByPresidente(currentUser);
         if (squadre == null || !squadre.iterator().hasNext()) {
-            throw new IllegalStateException("Nessuna squadra trovata per il presidente corrente");
+            return "/user/nessunaSquadra.html";
+            // throw new IllegalStateException("Nessuna squadra trovata per il presidente
+            // corrente");
         }
         Squadra squadraCorrente = squadre.iterator().next();
         model.addAttribute("rimuoviGiocatori", giocatoreService.findBySquadra(squadraCorrente));
