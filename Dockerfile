@@ -1,5 +1,5 @@
 # Usa un'immagine con Maven e Java 17
-FROM maven:3.8.4openjdk-17-slim AS build
+FROM maven:3.8.4-openjdk-17-slim AS build
 
 # Set della directory di lavoro
 WORKDIR /app
