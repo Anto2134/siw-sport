@@ -13,7 +13,9 @@
 # # Comando per avviare l'app
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 # Immagine base con Java 17 e Maven
-FROM maven:3.8.6-openjdk-17-slim AS build
+# FROM maven:3.8.6-openjdk-17-slim AS build
+FROM openjdk:17-jdk-slim AS build
+
 
 # Set della directory di lavoro
 WORKDIR /app
