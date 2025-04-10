@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.siw_sport.model.Credentials;
 import it.uniroma3.siw.siw_sport.model.Presidente;
 import it.uniroma3.siw.siw_sport.service.presidenteService;
+import it.uniroma3.siw.siw_sport.service.squadraService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -27,6 +28,9 @@ public class AuthenticationController {
 
     @Autowired
     private presidenteService presidenteService;
+
+	@Autowired
+	private squadraService squadraService;
 
 	@GetMapping(value = "/register") 
 	public String showRegisterForm (Model model) {
@@ -63,6 +67,7 @@ public class AuthenticationController {
 	public String index(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof AnonymousAuthenticationToken) {
+			model.addAttribute("squadre", squadraService.findAll());
 	        return "index.html";
 		}
 		else {		
@@ -75,6 +80,7 @@ public class AuthenticationController {
 				return "user/indexUser.html";
 			}
 		}
+		// model.addAttribute("squadre", squadraService.findAll());
         return "index.html";
 	}
 		

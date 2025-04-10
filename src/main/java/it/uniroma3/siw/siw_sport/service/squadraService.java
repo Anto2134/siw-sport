@@ -32,4 +32,8 @@ public class squadraService {
     public boolean existByName(String nome){
         return squadraRepository.existsByNome(nome);
     }
+
+    public long count(){
+       return squadraRepository.count();
+    }
 }

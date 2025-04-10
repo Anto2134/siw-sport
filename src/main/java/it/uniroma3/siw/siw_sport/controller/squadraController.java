@@ -1,5 +1,7 @@
 package it.uniroma3.siw.siw_sport.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +33,11 @@ public class squadraController {
 
     @Autowired
     giocatoreService giocatoreService;
-    // @GetMapping("/squadra/{id}")
-    // public String getSquadra(@PathVariable("id") Long id, Model model) {
-    // model.addAttribute("squadra", this.squadraService.findById(id));
-    // return "squadra.html";
+
+    // @GetMapping("/")
+    // public String home(Model model) {
+    //     model.addAttribute("squadre", this.squadraService.findAll()); // Passa la lista di squadre al modello
+    //     return "index"; // Ritorna alla pagina index.html
     // }
 
     @GetMapping("/squadra")
@@ -42,11 +45,6 @@ public class squadraController {
         model.addAttribute("squadre", this.squadraService.findAll());
         return "squadre.html";
     }
-
-    // @GetMapping("/gestioneSquadre")
-    // public String gestioneSquadre(Model model) {
-    // return "formSquadre.html";
-    // }
 
     @GetMapping("/admin/gestioneSquadre")
     public String gestioneAdmin(Model model) {

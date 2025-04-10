@@ -14,7 +14,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Squadra {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
